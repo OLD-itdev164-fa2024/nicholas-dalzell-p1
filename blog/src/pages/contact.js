@@ -6,7 +6,7 @@ import Layout from "../components/layout"
 import Seo from "../components/seo"
 
 const Contact = ({ data }) => {
-    const { name, company, address } = data.site.siteMetadata.contact;
+    const { name, company, address, email } = data.site.siteMetadata.contact;
     return (
         <Layout>
             <Seo title="Home"/>
@@ -15,6 +15,7 @@ const Contact = ({ data }) => {
             <div>{company}</div>
             <div>{`C/O ${name}`}</div>
             <div>{address}</div>
+            <div>{email}</div>
             <div style={{maxWidth: `400px`, marginBottom: `1.5rem`}}>
             <StaticImage
                 src="../images/email.png"
@@ -40,6 +41,7 @@ query {
           name
           company
           address
+          email
         }
       }
     }

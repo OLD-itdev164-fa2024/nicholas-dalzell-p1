@@ -1,3 +1,6 @@
+require('dotenv').config({
+  path: `.env.${process.env.NODE_ENV}`
+})
 
 module.exports = {
   siteMetadata: {
@@ -8,11 +11,13 @@ module.exports = {
     contact: {
       name: `Nicholas Dalzell`,
       company: `National Bartender's Association`,
-      address: `PO Box 5689`
+      address: `PO Box 5689`,
+      email: `dalzelln@gmatc.matc.edu`,
     }
   },
   plugins: [
     `gatsby-plugin-image`,
+    `gatsby-plugin-styled-components`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -23,10 +28,11 @@ module.exports = {
     {
       resolve: `gatsby-source-contentful`,
       options: {
-        spaceId: `799ef924nbnu`,
-        accessToken: `uCDpJXYHpNzC_qfzW5UfwjLQzaCeChWyUhsdDNKG90M`
+        spaceId: `${process.env.SPACE_ID}`,
+        accessToken: `${process.env.ACCESS_TOKEN}`
       }
     },
+    `gatsby-transformer-remark`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
